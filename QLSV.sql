@@ -84,3 +84,24 @@ WHERE C.ClassName = 'A1';
 SELECT S.StudentId, S.StudentName, Sub.SubName, M.Mark
 FROM Student S join Mark M on S.StudentId = M.StudentId join Subject Sub on M.SubId = Sub.SubId
 WHERE Sub.SubName = 'CF';
+
+SELECT *
+FROM Student S
+WHERE S.StudentName LIKE "h%";
+
+SELECT S.StudentId, S.StudentName, C.ClassName, C.StartDate
+FROM Class C join Student S on C.ClassId = S.ClassId
+WHERE month(C.StartDate) = '12';
+
+SELECT *
+FROM Subject
+WHERE Credit >= 3 AND Credit <= 5;
+
+SET SQL_SAFE_UPDATES=0;
+UPDATE Student
+SET ClassId=2
+WHERE StudentName = 'Hung';
+
+SELECT S.StudentId, S.StudentName, Sub.SubName, M.Mark
+FROM Student S join Mark M on S.StudentId = M.StudentId join Subject Sub on M.SubId = Sub.SubId
+Order By M.Mark Desc
